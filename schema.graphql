@@ -1,0 +1,107 @@
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  PoolManager_id: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DynamicSwapFeeUpdated @entity(immutable: true) {
+  id: Bytes!
+  PoolManager_id: Bytes! # bytes32
+  dynamicSwapFee: Int! # uint24
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialize @entity(immutable: true) {
+  id: Bytes!
+  PoolManager_id: Bytes! # bytes32
+  currency0: Bytes! # address
+  currency1: Bytes! # address
+  fee: Int! # uint24
+  tickSpacing: Int! # int24
+  hooks: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ModifyLiquidity @entity(immutable: true) {
+  id: Bytes!
+  PoolManager_id: Bytes! # bytes32
+  sender: Bytes! # address
+  tickLower: Int! # int24
+  tickUpper: Int! # int24
+  liquidityDelta: BigInt! # int256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OperatorSet @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  operator: Bytes! # address
+  approved: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnerChanged @entity(immutable: true) {
+  id: Bytes!
+  oldOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProtocolFeeControllerUpdated @entity(immutable: true) {
+  id: Bytes!
+  protocolFeeController: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProtocolFeeUpdated @entity(immutable: true) {
+  id: Bytes!
+  PoolManager_id: Bytes! # bytes32
+  protocolFee: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Swap @entity(immutable: true) {
+  id: Bytes!
+  PoolManager_id: Bytes! # bytes32
+  sender: Bytes! # address
+  amount0: BigInt! # int128
+  amount1: BigInt! # int128
+  sqrtPriceX96: BigInt! # uint160
+  liquidity: BigInt! # uint128
+  tick: Int! # int24
+  fee: Int! # uint24
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  from: Bytes! # address
+  to: Bytes! # address
+  PoolManager_id: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
